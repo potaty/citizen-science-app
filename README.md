@@ -1,10 +1,20 @@
 # Citizen Science Web Application
 
-You can run the Python server with the command:
+After git clone this code, please install the dependencies first:
+```
+yarn install
+```
+OR
+```
+npm install
+```
+
+You can run the Python server with the command in Python3:
 
 ```
 python main.py
 ``` 
+
 This requires Python 3 and the bottle library, I've included bottle with this project
 so you should not need to download anything other than Python 3. 
 
