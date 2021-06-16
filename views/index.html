@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Citizen Science</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
+    <!-- Include Handlebars from a CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="/static/js/main.js" type="module" defer></script>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header>
+      <div id="logo"></div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#!/users">Users</a></li>
+          <li><a href="#!/observations">Observations</a></li>
+          <li><a href="#!/submit">Submit an observation</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="content">
+      <div id="heading">
+        <hgroup>
+          <h1>Citizen Science</h1>
+          <h2>Understanding Our Trees</h2>
+        </hgroup>
+        <div id="element"></div>
+      </div>
+    </div>
+    <footer>
+      <div id="social">
+        <ul>
+          <li id="social-twitter"><a href="#">Twitter</a></li>
+          <li id="social-facebook"><a href="#">Facebook</a></li>
+          <li id="social-instagram"><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+      <ul class="footer-tos">
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Cookies</a></li>
+      </ul>
+      <p id="copyright">
+        All content and images subject to copyright &copy; COMP2110 Citizen
+        Science 2020.
+      </p>
+    </footer>
+    <script id="users-details" type="text/x-handlebars-template">
+      <div>
+        <h3>
+          Users
+        </h3>
+        <div>
+          Click the name or avatar to see the details.
+        </div>
+        <table>
+          <thead>
+            <th>
+              First Name
+            </th>
+            <th>
+              Second Name
+            </th>
+            <th>
+              Email
+            </th>
+            <th>
+              Avatar
+            </th>
+          </thead>
+          <tbody>
+            {{#each users}}
+              <tr>
+                <td>
+                  <a href="/#!/users/{{id}}">
+                    {{first_name}} {{last_name}}
+                  </a>
+                </td>
+                <td>
+                  {{last_name}}
+                </td>
+                <td>
+                  {{email}}
+                </td>
+                <td>
+                  <a href="/#!/users/{{id}}">
+                    <img src="{{avatar}}" height="40" width="40" />
+                  </a>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </script>
+    <script id="user-details" type="text/x-handlebars-template">
+      <div>
+        <h2>
+          User Detail
+        </h2>
+        <table>
+          <thead>
+            <th>
+              Avatar
+            </th>
+            <th>
+              ID
+            </th>
+            <th>
+              First Name
+            </th>
+            <th>
+              Second Name
+            </th>
+            <th>
+              Email
+            </th>
+          </thead>
+          <tbody>
+            {{#with user}}
+              <tr>
+                <td>
+                  <a href="/#!/users/{{id}}">
+                    <img src="{{avatar}}" height="40" width="40" />
+                  </a>
+                </td>
+                <td>
+                  {{id}}
+                </td>
+                <td>
+                  <a href="/#!/users/{{id}}">
+                    {{first_name}} {{last_name}}
+                  </a>
+                </td>
+                <td>
+                  {{last_name}}
+                </td>
+                <td>
+                  {{email}}
+                </td>
+              </tr>
+            {{/with}}
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3>
+          Observations of {{user.first_name}} {{user.last_name}}
+        </h3>
+        <table>
+          <thead>
+            <th>
+              id
+            </th>
+            <th>
+              participant
+            </th>
+            <th>
+              temperature
+            </th>
+            <th>
+              weather
+            </th>
+            <th>
+              wind
+            </th>
+            <th>
+              location
+            </th>
+            <th>
+              height
+            </th>
+            <th>
+              girth
+            </th>
+            <th>
+              leaf_size
+            </th>
+            <th>
+              leaf_shape
+            </th>
+            <th>
+              bark_colour
+            </th>
+            <th>
+              bark_texture
+            </th>
+          </thead>
+          <tbody>
+            {{#each observations}}
+              <tr>
+                <td>
+                  <a href="/#!/users/{{participant}}">
+                    {{id}}
+                  </a>
+                </td>
+                <td>
+                  <a href="/#!/users/{{participant}}">
+                    {{participant}}
+                  </a>
+                </td>
+                <td>
+                  <a href="/#!/observations/{{id}}">
+                    {{temperature}}
+                  </a>
+                </td>
+                <td>
+                  <a href="/#!/observations/{{id}}">
+                    {{weather}}
+                  </a>
+                </td>
+                <td>
+                  <a href="/#!/observations/{{id}}">
+                    {{wind}}
+                  </a>
+                </td>
+                <td>
+                  <a href="/#!/observations/{{id}}">
+                    {{location}}
+                  </a>
+                </td>
+                <td>
+                  <a href="/#!/observations/{{id}}">
+                    {{height}}
+                  </a>
+                </td>
+                <td>
+                  <a href="/#!/observations/{{id}}">
+                    {{girth}}
+                  </a>
+                </td>
+                <td>
+                  <a href="/#!/observations/{{id}}">
+                    {{leaf_size}}
+                  </a>
+                </td>
+                <td>
+                  <a href="/#!/observations/{{id}}">
+                    {{leaf_shape}}
+                  </a>
+                </td>
+                <td>
+                  <a href="/#!/observations/{{id}}">
+                    {{bark_colour}}
+                  </a>
+                </td>
+                <td>
+                  <a href="/#!/observations/{{id}}">
+                    {{bark_texture}}
+                  </a>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </script>
+    <script id="observation-details" type="text/x-handlebars-template">
+      <div>
+        <h2>
+          Observations
+        </h2>
+        <table>
+          <thead>
+            <th>
+              id
+            </th>
+            <th>
+              participant
+            </th>
+            <th>
+              temperature
+            </th>
+            <th>
+              weather
+            </th>
+            <th>
+              wind
+            </th>
+            <th>
+              location
+            </th>
+            <th>
+              height
+            </th>
+            <th>
+              girth
+            </th>
+            <th>
+              leaf_size
+            </th>
+            <th>
+              leaf_shape
+            </th>
+            <th>
+              bark_colour
+            </th>
+            <th>
+              bark_texture
+            </th>
+          </thead>
+          <tbody>
+            {{#with observation}}
+              <tr>
+                <td>
+                  {{id}}
+                </td>
+                <td>
+                  <a href="/#!/users/{{participant}}">
+                    {{participant}}
+                  </a>
+                </td>
+                <td>
+                  {{temperature}}
+                </td>
+                <td>
+                  {{weather}}
+                </td>
+                <td>
+                  {{wind}}
+                </td>
+                <td>
+                  {{location}}
+                </td>
+                <td>
+                  {{height}}
+                </td>
+                <td>
+                  {{girth}}
+                </td>
+                <td>
+                  {{leaf_size}}
+                </td>
+                <td>
+                  {{leaf_shape}}
+                </td>
+                <td>
+                  {{bark_colour}}
+                </td>
+                <td>
+                  {{bark_texture}}
+                </td>
+              </tr>
+            {{/with}}
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h2>
+          User Detail
+        </h2>
+        <table>
+          <thead>
+            <th>
+              Avatar
+            </th>
+            <th>
+              ID
+            </th>
+            <th>
+              First Name
+            </th>
+            <th>
+              Second Name
+            </th>
+            <th>
+              Email
+            </th>
+          </thead>
+          <tbody>
+            {{#with user}}
+              <tr>
+                <td>
+                  <img src="{{avatar}}" height="40" width="40" />
+                </td>
+                <td>
+                  {{id}}
+                </td>
+                <td>
+                  <a href="/#!/users/{{id}}">
+                    {{first_name}} {{last_name}}
+                  </a>
+                </td>
+                <td>
+                  {{last_name}}
+                </td>
+                <td>
+                  {{email}}
+                </td>
+              </tr>
+            {{/with}}
+          </tbody>
+        </table>
+      </div>
+    </script>
+    <script id="observations-details" type="text/x-handlebars-template">
+      <div>
+        <h2>
+          Observation List
+        </h2>
+        <table>
+          <thead>
+            <th>
+              id
+            </th>
+            <th>
+              participant
+            </th>
+            <th>
+              temperature
+            </th>
+            <th>
+              weather
+            </th>
+            <th>
+              wind
+            </th>
+            <th>
+              location
+            </th>
+            <th>
+              height
+            </th>
+            <th>
+              girth
+            </th>
+            <th>
+              leaf_size
+            </th>
+            <th>
+              leaf_shape
+            </th>
+            <th>
+              bark_colour
+            </th>
+            <th>
+              bark_texture
+            </th>
+          </thead>
+          <tbody>
+            {{#each observations}}
+              <tr>
+                <td>
+                  <a href="/#!/observations/{{id}}">
+                    {{id}}
+                  </a>
+                </td>
+                <td>
+                  <a href="/#!/users/{{participant}}">
+                    {{participant}}
+                  </a>
+                </td>
+                <td>
+                  {{temperature}}
+                </td>
+                <td>
+                  <a href="/#!/observations/{{id}}">
+                    {{weather}}
+                  </a>
+                </td>
+                <td>
+                  {{wind}}
+                </td>
+                <td>
+                  <a href="/#!/observations/{{id}}">
+                    {{location}}
+                  </a>
+                </td>
+                <td>
+                  {{height}}
+                </td>
+                <td>
+                  {{girth}}
+                </td>
+                <td>
+                  {{leaf_size}}
+                </td>
+                <td>
+                  {{leaf_shape}}
+                </td>
+                <td style="background-color: {{bark_colour}}; color: white;">
+                  {{bark_colour}}
+                </td>
+                <td>
+                  {{bark_texture}}
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </script>
+    <script id="default" type="text/x-handlebars-template">
+      <div>
+        <h2>
+          Leaderboard
+        </h2>
+        <table>
+          <thead>
+            <th>
+              Avatar
+            </th>
+            <th>
+              Observation Count
+            </th>
+            <th>
+              First Name
+            </th>
+            <th>
+              Second Name
+            </th>
+            <th>
+              Email
+            </th>
+          </thead>
+          <tbody>
+            {{#each users}}
+              <tr>
+                <td>
+                  <img src="{{avatar}}" height="40" width="40" />
+                </td>
+                <td>
+                  {{len}}
+                </td>
+                <td>
+                  <a href="/#!/users/{{id}}">
+                    {{first_name}} {{last_name}}
+                  </a>
+                </td>
+                <td>
+                  {{last_name}}
+                </td>
+                <td>
+                  {{email}}
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h2>
+          Recent Observations
+        </h2>
+        <table>
+          <thead>
+            <th>
+              id
+            </th>
+            <th>
+              participant
+            </th>
+            <th>
+              temperature
+            </th>
+            <th>
+              weather
+            </th>
+            <th>
+              wind
+            </th>
+            <th>
+              location
+            </th>
+            <th>
+              height
+            </th>
+            <th>
+              girth
+            </th>
+            <th>
+              leaf_size
+            </th>
+            <th>
+              leaf_shape
+            </th>
+            <th>
+              bark_colour
+            </th>
+            <th>
+              bark_texture
+            </th>
+          </thead>
+          <tbody>
+            {{#each observations}}
+              <tr>
+                <td>
+                  <a href="/#!/observations/{{id}}">
+                    {{id}}
+                  </a>
+                </td>
+                <td>
+                  <a href="/#!/users/{{participant}}">
+                    {{participant}}
+                  </a>
+                </td>
+                <td>
+                  {{temperature}}
+                </td>
+                <td>
+                  {{weather}}
+                </td>
+                <td>
+                  {{wind}}
+                </td>
+                <td>
+                  {{location}}
+                </td>
+                <td>
+                  {{height}}
+                </td>
+                <td>
+                  {{girth}}
+                </td>
+                <td>
+                  {{leaf_size}}
+                </td>
+                <td>
+                  {{leaf_shape}}
+                </td>
+                <td>
+                  {{bark_colour}}
+                </td>
+                <td>
+                  {{bark_texture}}
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </script>
+    <script id="submit-form" type="text/x-handlebars-template">
+      <div style="display: flex; flex-direction: column;">
+        <form id="form" name="form">
+          <label for="participant">
+            participant
+          </label>
+          <input type="number" id="participant" name="participant" value="0" />
+          <br />
+          <label for="temperature">
+            temperature
+          </label>
+          <input type="number" id="temperature" name="temperature" />
+          <br />
+          <label for="weather">
+            weather
+          </label>
+          <select name="weather" id="weather">
+            <option value="raining">
+              raining
+            </option>
+            <option value="stormy">
+              stormy
+            </option>
+            <option value="sunny">
+              sunny
+            </option>
+            <option value="fine">
+              fine
+            </option>
+          </select>
+          <br />
+          <label for="location">
+            location
+          </label>
+          <input type="text" id="location" name="location" />
+          <br />
+          <label for="wind">
+            wind
+          </label>
+          <select name="wind" id="wind">
+            <option value="strong">
+              strong
+            </option>
+            <option value="medium">
+              medium
+            </option>
+            <option value="light">
+              light
+            </option>
+            <option value="none">
+              none
+            </option>
+          </select>
+          <br />
+          <label for="height">
+            height
+          </label>
+          <input type="number" id="height" name="height" />
+          <br />
+          <label for="girth">
+            girth
+          </label>
+          <input
+            type="number"
+            step="0.0001"
+            id="girth"
+            name="girth"
+            value="12.22"
+          />
+          <br />
+          <label for="leaf_size">
+            leaf_size
+          </label>
+          <select name="leaf_size" id="leaf_size">
+            <option value="small">
+              small
+            </option>
+            <option value="medium">
+              medium
+            </option>
+            <option value="large">
+              large
+            </option>
+          </select>
+          <br />
+          <label for="leaf_shape">
+            leaf_shape
+          </label>
+          <select name="leaf_shape" id="leaf_shape">
+            <option value="rounded">
+              rounded
+            </option>
+            <option value="pointy">
+              pointy
+            </option>
+            <option value="divided">
+              divided
+            </option>
+          </select>
+          <br />
+          <label for="bark_colour">
+            bark_colour
+          </label>
+          <select name="bark_colour" id="bark_colour">
+            <option value="grey">
+              grey
+            </option>
+            <option value="brown">
+              brown
+            </option>
+            <option value="red">
+              red
+            </option>
+            <option value="silver">
+              silver
+            </option>
+          </select>
+          <br />
+          <label for="bark_texture">
+            bark_texture
+          </label>
+          <select name="bark_texture" id="bark_texture">
+            <option value="peeling">
+              peeling
+            </option>
+            <option value="smooth">
+              smooth
+            </option>
+            <option value="spotty">
+              spotty
+            </option>
+            <option value="furry">
+              furry
+            </option>
+            <option value="crinkles">
+              crinkles
+            </option>
+          </select>
+          <br />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </script>
+    <dialog id="failed-dialog" style="color: red;">Error! </dialog>
+    <script src="/static/js/views.js" type="module" defer></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+#social {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-tos {
+  display: flex;
+  justify-content: center;
+}
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: solid;
+}
+
+header {
+  width: 100%;
+  background-color: teal;
+}
+
+header ul {
+  display: flex;
+  justify-content: center;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+}
+
+header ul {
+  display: flex;
+  padding-inline-start: 0;
+}
+
+header ul li {
+  color: black;
+  display: table;
+  margin: 20px;
+}
+
+footer {
+  background-color: teal;
+}
+
+footer ul {
+  display: flex;
+  flex-direction: row;
+}
+
+footer ul li {
+  margin: 10px;
+  color: white;
+}
+
+footer ul li a {
+  color: white;
+}
+
+footer p {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+}
+
+#heading {
+  background-color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0;
+  width: 300px;
+}
+
+td,
+th,
+tr {
+  border: 1px solid black;
+}
+
+#element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+#heading hgroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
