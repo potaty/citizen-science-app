@@ -20,7 +20,6 @@ like `/static/js/main.js` or `/static/css/style.css`.  The leading `/` is import
 add any other sub-folders you might want under the `static` folder and it will be served
 by the application.
 
-I have provided a few Javascript files in the project:
 * `main.js` is the main entry point and is referenced from the `index.html` file
 * `model.js` contains the outline of the Model object and the required methods that you must implement
 * `util.js` provides a utility function
